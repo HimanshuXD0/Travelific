@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './App.css'; // Import the CSS file
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -16,15 +17,18 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Items from MongoDB</h1>
-      <ul>
+    <div className="app-container">
+      <header className="header">
+        <h1>Items from MongoDB</h1>
+      </header>
+      <div className="items-container">
         {items.map(item => (
-          <li key={item._id}>
-            {item.name} - ₹{item.price}
-          </li>
+          <div className="item-card" key={item._id}>
+            <h2 className="item-name">{item.name}</h2>
+            <p className="item-price">₹{item.price}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
