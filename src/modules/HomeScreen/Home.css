@@ -13,6 +13,7 @@ body {
 /* Dashboard Container */
 .container {
     width: 600px;
+    max-width: 90%; /* Ensures the container fits on smaller screens */
     padding: 40px;
     background-color: white;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -62,9 +63,56 @@ ul span {
 /* Navigation Buttons */
 .nav-buttons {
     margin-top: 20px;
+    display: flex; /* Use flexbox for better alignment */
+    justify-content: center; /* Center navigation buttons */
+    gap: 10px; /* Space between buttons */
 }
 
+/* Toastify Container */
 .Toastify__toast-container {
     top: 20px;
     right: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px; /* Adjust padding for tablets */
+    }
+
+    h1 {
+        font-size: 24px; /* Smaller heading for tablets */
+    }
+
+    button {
+        font-size: 14px; /* Smaller button text */
+    }
+
+    ul span {
+        font-size: 16px; /* Adjust font size for product names */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px; /* Further reduce padding for mobile */
+    }
+
+    h1 {
+        font-size: 22px; /* Smaller heading for mobile */
+    }
+
+    button {
+        padding: 12px 18px; /* Adjust button padding for mobile */
+        font-size: 14px; /* Smaller button text */
+        margin: 5px 0; /* Adjust margin for mobile */
+    }
+
+    .nav-buttons {
+        flex-direction: column; /* Stack buttons vertically on mobile */
+    }
+
+    ul span {
+        font-size: 14px; /* Smaller product name font size for mobile */
+    }
 }
