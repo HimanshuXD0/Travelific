@@ -3,9 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../../utils/utils';
 import networkService from '../../services/networkService';
-import { createHeaders } from '../../utils/createHeaders';
-import './Login.css';
-
+import styles from './AuthForm.module.css';
 function Login() {
 
     const [loginInfo, setLoginInfo] = useState({
@@ -42,7 +40,7 @@ function Login() {
                 localStorage.setItem('token', token);
                 localStorage.setItem('loggedInUser', name);
                 setTimeout(() => {
-                    navigate('/home')
+                    navigate('/dashboard')
                 }, 1000)
             } else if (error) {
                 const details = error?.details[0].message;
@@ -57,36 +55,38 @@ function Login() {
     }
 
     return (
-        <div className='container'>
-            <h1>Login</h1>
-            <form onSubmit={handleLogin}>
-                <div>
-                    <label htmlFor='email'>Email</label>
-                    <input
-                        onChange={handleChange}
-                        type='email'
-                        name='email'
-                        placeholder='Enter your email...'
-                        value={loginInfo.email}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='password'>Password</label>
-                    <input
-                        onChange={handleChange}
-                        type='password'
-                        name='password'
-                        placeholder='Enter your password...'
-                        value={loginInfo.password}
-                    />
-                </div>
-                <button type='submit'>Login</button>
-                <span>Does't have an account ?
-                    <Link to="/signup">Signup</Link>
-                </span>
-            </form>
-            <ToastContainer />
-        </div>
+        <div className={styles.container}>
+        <h1>Login</h1>
+        <form onSubmit={handleLogin}>
+            <div className={styles.inputGroup}>
+                <label htmlFor='email'>Email</label>
+                <input
+                    onChange={handleChange}
+                    type='email'
+                    name='email'
+                    placeholder='Enter your email...'
+                    value={loginInfo.email}
+                />
+            </div>
+            <div className={styles.inputGroup}>
+                <label htmlFor='password'>Password</label>
+                <input
+                    onChange={handleChange}
+                    type='password'
+                    name='password'
+                    placeholder='Enter your password...'
+                    value={loginInfo.password}
+                />
+            </div>
+            <button type='submit' className={styles.loginButton}>
+                Login
+            </button>
+            <span className={styles.signupLink}>
+                Doesn't have an account? <Link to="/signup">Signup</Link>
+            </span>
+        </form>
+        <ToastContainer />
+    </div>
     )
 }
 

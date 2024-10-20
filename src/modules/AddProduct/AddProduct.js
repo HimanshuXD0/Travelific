@@ -4,7 +4,8 @@ import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../../utils/utils';
 import networkService from '../../services/networkService';
 import { createHeaders } from '../../utils/createHeaders';
-import './AddProduct.css';
+import styles from '../AddProduct/.AddProduct.module.css'; // Adjust path if needed
+
 
 function AddProduct() {
 
@@ -42,7 +43,7 @@ function AddProduct() {
             if (success) {
                 handleSuccess(`${message}`);
                 setTimeout(() => {
-                    navigate('/home')
+                    navigate('/dashboard')
                 },5000)
             } else if (error) {
                 const details = error?.details[0].message;
@@ -56,36 +57,39 @@ function AddProduct() {
         }
     }
     return (
-        <div className='container'>
-            <h1>Add Product</h1>
-            <form onSubmit={handleAddProd}>
-                <div>
-                    <label htmlFor='name'>Name</label>
-                    <input
-                        onChange={handleChange}
-                        type='text'
-                        name='name'
-                        autoFocus
-                        placeholder='Enter product  name...'
-                        value={prodInfo.name}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='price'>Price</label>
-                    <input
-                        onChange={handleChange}
-                        type='number'
-                        name='price'
-                        placeholder='Enter product price...'
-                        value={prodInfo.price}
-                    />
-                </div>
-                <button type='submit'>Upload</button>
-                    <Link to="/home">Back </Link>
-               
-            </form>
-            <ToastContainer />
-        </div>
+        <div className={styles.container}>
+        <h1>Add Product</h1>
+        <form onSubmit={handleAddProd}>
+            <div className={styles.inputGroup}>
+                <label htmlFor='name'>Name</label>
+                <input
+                    onChange={handleChange}
+                    type='text'
+                    name='name'
+                    autoFocus
+                    placeholder='Enter product name...'
+                    value={prodInfo.name}
+                />
+            </div>
+            <div className={styles.inputGroup}>
+                <label htmlFor='price'>Price</label>
+                <input
+                    onChange={handleChange}
+                    type='number'
+                    name='price'
+                    placeholder='Enter product price...'
+                    value={prodInfo.price}
+                />
+            </div>
+            <button type='submit' className={styles.authButton}>
+                Upload
+            </button>
+            <span className={styles.authLink}>
+                <Link to="/dashboard">Back</Link>
+            </span>
+        </form>
+        <ToastContainer />
+    </div>
     )
 }
 

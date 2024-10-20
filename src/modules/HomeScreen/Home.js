@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import './Home.css'
 import { useNavigate } from 'react-router-dom';
 import { handleError, handleSuccess } from '../../utils/utils';
 import { ToastContainer } from 'react-toastify';
 import networkService from '../../services/networkService';
 import { createHeaders } from '../../utils/createHeaders';
+import styles from "./Home.module.css"
 
 function Home() {
     const [loggedInUser, setLoggedInUser] = useState('');
@@ -44,15 +44,20 @@ function Home() {
         }
     }
      const handlePrev = ()=>{
-         page--;
+
          console.log(`page by --> prev ${page}`)
-         if(page)fetchProducts(page)
+         if(page>=1){
+            page--;
+            fetchProducts(page)
+         }
             setPage(page);
      }
      const handleNext = ()=>{
         console.log(`page by --> next ${page}`)
-        page++;
-        if(page<=4)fetchProducts(page)
+        
+        if(page<=10){
+            fetchProducts(page)
+            page++;}
         setPage(page);
      }
     useEffect(() => {
@@ -60,24 +65,26 @@ function Home() {
     }, [])
 
     return (
-        <div>
-             <h1>Welcome {loggedInUser}</h1>
-            <button onClick={handleLogout}>Logout</button>
-             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button onClick={handleAddProd}>Add Product</button>
-            <div>
-                {
-                    products && products?.map((item, index) => (
-                        <ul key={index}>
-                            <span>{item.name} : {item.price}</span>
-                        </ul>
-                    ))
-                }
-                <button onClick={handlePrev}>Prev</button> 
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button onClick={handleNext}>Next</button> 
+        <div className={styles.welcomeContainer}>
+            <h1 className={styles.welcomeTitle}>Welcome {loggedInUser}</h1>
+            <div className={styles.buttonContainer}>
+                <button className={styles.actionButton} onClick={handleLogout}>Logout</button>
+                <button className={styles.actionButton} onClick={handleAddProd}>Add Product</button>
             </div>
-            <ToastContainer /> 
+            <div>
+                <ul className={styles.productList}>
+                    {products && products.map((item, index) => (
+                        <li key={index} className={styles.productListItem}>
+                            <span>{item.name} : {item.price}</span>
+                        </li>
+                    ))}
+                </ul>
+                <div>
+                    <button className={styles.navButton} onClick={handlePrev}>Prev</button>
+                    <button className={styles.navButton} onClick={handleNext}>Next</button>
+                </div>
+            </div>
+            <ToastContainer />
         </div>
     )
 }

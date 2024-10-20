@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import './Signup.css';
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../../utils/utils';
 import { createHeaders } from '../../utils/createHeaders';
 import networkService from '../../services/networkService';
+import styles from './AuthForm.module.css';
 function Signup() {
 
     const [signupInfo, setSignupInfo] = useState({
@@ -51,47 +51,49 @@ function Signup() {
         }
     }
     return (
-        <div className='container'>
-            <h1>Signup</h1>
-            <form onSubmit={handleSignup}>
-                <div>
-                    <label htmlFor='name'>Name</label>
-                    <input
-                        onChange={handleChange}
-                        type='text'
-                        name='name'
-                        autoFocus
-                        placeholder='Enter your name...'
-                        value={signupInfo.name}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='email'>Email</label>
-                    <input
-                        onChange={handleChange}
-                        type='email'
-                        name='email'
-                        placeholder='Enter your email...'
-                        value={signupInfo.email}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='password'>Password</label>
-                    <input
-                        onChange={handleChange}
-                        type='password'
-                        name='password'
-                        placeholder='Enter your password...'
-                        value={signupInfo.password}
-                    />
-                </div>
-                <button type='submit'>Signup</button>
-                <span>Already have an account ?
-                    <Link to="/login">Login</Link>
-                </span>
-            </form>
-            <ToastContainer />
-        </div>
+        <div className={styles.container}>
+        <h1>Signup</h1>
+        <form onSubmit={handleSignup}>
+            <div className={styles.inputGroup}>
+                <label htmlFor='name'>Name</label>
+                <input
+                    onChange={handleChange}
+                    type='text'
+                    name='name'
+                    autoFocus
+                    placeholder='Enter your name...'
+                    value={signupInfo.name}
+                />
+            </div>
+            <div className={styles.inputGroup}>
+                <label htmlFor='email'>Email</label>
+                <input
+                    onChange={handleChange}
+                    type='email'
+                    name='email'
+                    placeholder='Enter your email...'
+                    value={signupInfo.email}
+                />
+            </div>
+            <div className={styles.inputGroup}>
+                <label htmlFor='password'>Password</label>
+                <input
+                    onChange={handleChange}
+                    type='password'
+                    name='password'
+                    placeholder='Enter your password...'
+                    value={signupInfo.password}
+                />
+            </div>
+            <button type='submit' className={styles.authButton}>
+                Signup
+            </button>
+            <span className={styles.authLink}>
+                Already have an account? <Link to="/login">Login</Link>
+            </span>
+        </form>
+        <ToastContainer />
+    </div>
     )
 }
 
