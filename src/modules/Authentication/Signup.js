@@ -33,7 +33,7 @@ function Signup() {
             return handleError('name, email and password are required')
         }
         try {
-            const url = `http://localhost:5000/api/auth/signup`;
+            const url = `https://travelific-api.onrender.com/api/auth/signup`;
             const body = JSON.stringify(signupInfo)
             const response = await networkService.post({
                 url: url, body: body, headers: {
