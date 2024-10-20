@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import './Home.css'
 import { useNavigate } from 'react-router-dom';
 import { handleError, handleSuccess } from '../../utils/utils';
 import { ToastContainer } from 'react-toastify';

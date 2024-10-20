@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../../utils/utils';
 import networkService from '../../services/networkService';
 import { createHeaders } from '../../utils/createHeaders';
-
+import './AddProduct.css';
 
 function AddProduct() {
 
@@ -66,7 +66,7 @@ function AddProduct() {
                         type='text'
                         name='name'
                         autoFocus
-                        placeholder='Enter your name...'
+                        placeholder='Enter product  name...'
                         value={prodInfo.name}
                     />
                 </div>
@@ -74,9 +74,9 @@ function AddProduct() {
                     <label htmlFor='price'>Price</label>
                     <input
                         onChange={handleChange}
-                        type='text'
+                        type='number'
                         name='price'
-                        placeholder='Enter your email...'
+                        placeholder='Enter product price...'
                         value={prodInfo.price}
                     />
                 </div>

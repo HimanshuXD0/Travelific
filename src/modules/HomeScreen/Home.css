@@ -1,0 +1,70 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Dashboard Container */
+.container {
+    width: 600px;
+    padding: 40px;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Welcome Message */
+h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Button Styles */
+button {
+    padding: 10px 20px;
+    margin: 10px 5px;
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #357ABD;
+}
+
+/* Products List */
+ul {
+    list-style: none;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f0f2f5;
+    border-radius: 5px;
+}
+
+ul span {
+    font-size: 18px;
+    color: #555;
+    font-weight: bold;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+    margin-top: 20px;
+}
+
+.Toastify__toast-container {
+    top: 20px;
+    right: 20px;
+}
