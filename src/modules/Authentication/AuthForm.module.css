@@ -73,3 +73,20 @@
     border-radius: 4px;
     cursor: pointer;
 }
+.dropdown {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+}
+
+.dropdown label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+.dropdown  select{
+    padding: 0.75rem;
+   
+
+}

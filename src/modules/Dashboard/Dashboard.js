@@ -15,15 +15,20 @@ function Dashboard() {
             navigate('/home');
         }, 1000)
     }
+    const handleMyProfile = (e) => {
+        setTimeout(() => {
+            navigate('/myprofile');
+        }, 1000)
+    }
     return (
         <div lang="en">
             <nav>
                 <ul className="nav__links">
                     <li className="link"><a href="#" onClick={handleAddProd}>HOME</a></li>
                     <li className="link"><a href="#"onClick={handleOnHome}>ABOUT US</a></li>
-                    <li className="link"><a href="#">E-TICKET</a></li>
+                    <li className="link"><a href="#">BOOKING</a></li>
                     <li className="link"><a href="#">JOURNEY</a></li>
-                    <li className="link"><a href="#">CONTACT</a></li>
+                    <li className="link"><a href="#"onClick={handleMyProfile}>MY PROFILE</a></li>
                 </ul>
             </nav>
 

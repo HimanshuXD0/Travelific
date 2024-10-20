@@ -4,16 +4,19 @@ import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../../utils/utils';
 import networkService from '../../services/networkService';
 import styles from './AuthForm.module.css';
+
+let myProfileInfo;
 function Login() {
 
     const [loginInfo, setLoginInfo] = useState({
         email: '',
         password: ''
     })
+     
 
     const navigate = useNavigate();
 
-    const handleChange = (e) => {
+       const handleChange = (e) => {
         const { name, value } = e.target;
         console.log(name, value);
         const copyLoginInfo = { ...loginInfo };
@@ -28,11 +31,13 @@ function Login() {
             return handleError('email and password are required')
         }
         try {
-            const url = `https://travelific-api.onrender.com/api/auth/signin`;
+            const url = `http://localhost:5000/api/auth/signin`;
             const body = JSON.stringify(loginInfo);
             const response = await networkService.post({url:url,body:body,headers:{
                 'Content-Type': "application/json",
             }})
+            const result = response.data
+            myProfileInfo = result
             const { success, message, token, name, error } = response.data;
             console.log(`Your toku value -----> ${token}`);        
             if (success) {
@@ -91,3 +96,4 @@ function Login() {
 }
 
 export default Login
+export  {myProfileInfo}

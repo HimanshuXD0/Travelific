@@ -6,6 +6,7 @@ import AddProduct from './modules/AddProduct/AddProduct'
 import { useState } from 'react';
 import RefrshHandler from './utils/RefrshHandler';
 import Dashboard from './modules/Dashboard/Dashboard';
+import MyProfile from './modules/MyProfile/Myprofile';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -27,6 +28,7 @@ function App() {
         <Route path='/home' element={<PrivateRoute element={<Home />} />} />
         <Route path='/addproduct' element={<Isvalid element={<AddProduct/>} />} />
         <Route path='/dashboard' element={<Dashboard/>} />
+        <Route path='/myprofile' element={<MyProfile/>} />
       </Routes>
     </div>
   );
