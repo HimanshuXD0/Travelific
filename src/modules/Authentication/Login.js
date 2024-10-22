@@ -1,99 +1,63 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify';
-import { handleError, handleSuccess } from '../../utils/utils';
-import networkService from '../../services/networkService';
+// Login.js
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { loginRequest } from '../Authentication/store/authSlice';
+import { useNavigate } from 'react-router-dom';
 import styles from './AuthForm.module.css';
+import { ToastContainer } from 'react-toastify';
+import { handleError } from '../../utils/utils';
 
-let myProfileInfo;
 function Login() {
-
-    const [loginInfo, setLoginInfo] = useState({
-        email: '',
-        password: ''
-    })
-     
-
+    const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
-       const handleChange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
-        console.log(name, value);
-        const copyLoginInfo = { ...loginInfo };
-        copyLoginInfo[name] = value;
-        setLoginInfo(copyLoginInfo);
-    }
+        setLoginInfo((prev) => ({ ...prev, [name]: value }));
+    };
+    
+    const handleSignup = () => navigate('/signup')    
 
-    const handleLogin = async (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
         const { email, password } = loginInfo;
         if (!email || !password) {
-            return handleError('email and password are required')
+            return handleError('Email and password are required');
         }
-        try {
-            const url = `https://travelific-api.onrender.com/api/auth/signin`;
-            const body = JSON.stringify(loginInfo);
-            const response = await networkService.post({url:url,body:body,headers:{
-                'Content-Type': "application/json",
-            }})
-            const result = response.data
-            myProfileInfo = result
-            const { success, message, token, name, error } = response.data;
-            console.log(`Your toku value -----> ${token}`);        
-            if (success) {
-                handleSuccess(message);
-                localStorage.setItem('token', token);
-                localStorage.setItem('loggedInUser', name);
-                setTimeout(() => {
-                    navigate('/dashboard')
-                }, 1000)
-            } else if (error) {
-                const details = error?.details[0].message;
-                handleError(details);
-            } else if (!success) {
-                handleError(message);
-            }
-            //console.log(result);
-        } catch (err) {
-            handleError(err);
-        }
-    }
+        dispatch(loginRequest({ email, password, navigate }));
+    };
 
     return (
         <div className={styles.container}>
-        <h1>Login</h1>
-        <form onSubmit={handleLogin}>
-            <div className={styles.inputGroup}>
-                <label htmlFor='email'>Email</label>
-                <input
-                    onChange={handleChange}
-                    type='email'
-                    name='email'
-                    placeholder='Enter your email...'
-                    value={loginInfo.email}
-                />
-            </div>
-            <div className={styles.inputGroup}>
-                <label htmlFor='password'>Password</label>
-                <input
-                    onChange={handleChange}
-                    type='password'
-                    name='password'
-                    placeholder='Enter your password...'
-                    value={loginInfo.password}
-                />
-            </div>
-            <button type='submit' className={styles.loginButton}>
-                Login
-            </button>
-            <span className={styles.signupLink}>
-                Doesn't have an account? <Link to="/signup">Signup</Link>
-            </span>
-        </form>
-        <ToastContainer />
-    </div>
-    )
+            <h1>Login</h1>
+            <form onSubmit={handleLogin}>
+                <div className={styles.inputGroup}>
+                    <label htmlFor='email'>Email</label>
+                    <input
+                        onChange={handleChange}
+                        type='email'
+                        name='email'
+                        placeholder='Enter your email...'
+                        value={loginInfo.email}
+                    />
+                </div>
+                <div className={styles.inputGroup}>
+                    <label htmlFor='password'>Password</label>
+                    <input
+                        onChange={handleChange}
+                        type='password'
+                        name='password'
+                        placeholder='Enter your password...'
+                        value={loginInfo.password}
+                    />
+                </div>
+                <button type='submit' className={styles.loginButton}>Login</button>
+                <button onClick={handleSignup} className={styles.loginButton}>Signup</button>
+            </form>
+            <ToastContainer />
+        </div>
+    );
 }
 
-export default Login
-export  {myProfileInfo}
+export default Login;
