@@ -14,8 +14,9 @@ class networkService {
 
   static async post({url, body = {}, headers = {}}) {
     try {
+      //console.log("from post method")
       const response = await axios.post(url, body, { headers });
-      console.log(response.data)
+      console.log(response)
       return response;
     } catch (error) {
       throw new Error('POST request failed');

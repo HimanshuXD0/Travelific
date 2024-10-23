@@ -7,7 +7,7 @@ import styles from './AuthForm.module.css';
 import { ToastContainer } from 'react-toastify';
 import { handleError } from '../../utils/utils';
 
-function Login() {
+function Login(){
     const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ function Login() {
         const { name, value } = e.target;
         setLoginInfo((prev) => ({ ...prev, [name]: value }));
     };
-    
+
     const handleSignup = () => navigate('/signup')    
 
     const handleLogin = (e) => {

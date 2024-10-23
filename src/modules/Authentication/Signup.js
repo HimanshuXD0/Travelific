@@ -1,58 +1,54 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+// Signup.js
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { signupRequest } from '../Authentication/store/signUpSlice';
 import { handleError, handleSuccess } from '../../utils/utils';
-import { createHeaders } from '../../utils/createHeaders';
-import networkService from '../../services/networkService';
 import styles from './AuthForm.module.css';
-function Signup() {
 
+function Signup() {
     const [signupInfo, setSignupInfo] = useState({
         name: '',
         email: '',
         password: '',
         state: '',
         city: '',
-        mobile: ''
+        mobile: '',
+    });
 
-    })
-
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { isLoading, error, successMessage } = useSelector((state) => state.auth); // Select loading and error state
+
     const handleChange = (e) => {
         const { name, value } = e.target;
-        console.log(name, value);
-        const copySignupInfo = { ...signupInfo };
-        copySignupInfo[name] = value;             // here name contains "email" that are comming from e
-        setSignupInfo(copySignupInfo);
+        setSignupInfo((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSignup = (e) => {
+        e.preventDefault();
+        const { name, email, password, city, state, mobile } = signupInfo;
+
+        if (!name || !email || !password || !city || !state || !mobile) {
+            return handleError('All fields are required');
+        }
+
+        dispatch(signupRequest(signupInfo)); // Dispatch the signup request
+    };
+
+    // Handle success and error messages
+    if (successMessage) {
+        handleSuccess(successMessage);
+        setTimeout(() => {
+            navigate('/login');
+        }, 1000);
     }
 
-    const handleSignup = async (e) => {
-        e.preventDefault();
-        const { name, email, password,city,state,mobile} = signupInfo;
-        if (!name || !email || !password || !city||!state||!mobile) {
-            return handleError('name, email and password are required')
-        }
-        try {
-            const url = `https://travelific-api.onrender.com/api/auth/signup`;
-            const body = JSON.stringify(signupInfo)
-            const response = await networkService.post({
-                url: url, body: body, headers: {
-                    'Content-Type': "application/json",
-                }
-            })
-            const { success, message, error } = response.data;
-            if (success) {
-                handleSuccess(message);
-                setTimeout(() => {
-                    navigate('/login')
-                }, 1000)
-            } else if (error) {
-                handleError(error);
-            }
-        } catch (err) {
-            handleError(err);
-        }
+    if (error) {
+        handleError(error);
     }
+
     return (
         <div className={styles.container}>
             <h1>Signup</h1>
@@ -96,9 +92,7 @@ function Signup() {
                         autoFocus
                         value={signupInfo.state}
                     >
-                        <option value="" disabled>
-                            Select your state...
-                        </option>
+                        <option value="" disabled>Select your state...</option>
                         {[
                             'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar',
                             'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh',
@@ -109,9 +103,7 @@ function Signup() {
                             'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu', 'Lakshadweep',
                             'Delhi', 'Puducherry'
                         ].map((state) => (
-                            <option key={state} value={state}>
-                                {state}
-                            </option>
+                            <option key={state} value={state}>{state}</option>
                         ))}
                     </select>
                 </div>
@@ -138,8 +130,8 @@ function Signup() {
                         value={signupInfo.mobile}
                     />
                 </div>
-                <button type='submit' className={styles.authButton}>
-                    Signup
+                <button type='submit' className={styles.authButton} disabled={isLoading}>
+                    {isLoading ? 'Signing up...' : 'Signup'}
                 </button>
                 <span className={styles.authLink}>
                     Already have an account? <Link to="/login">Login</Link>
@@ -147,7 +139,7 @@ function Signup() {
             </form>
             <ToastContainer />
         </div>
-    )
+    );
 }
 
-export default Signup
+export default Signup;

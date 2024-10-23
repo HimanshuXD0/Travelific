@@ -2,6 +2,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { loginRequest, loginSuccess, loginFailure } from './authSlice';
 import networkService from '../../../services/networkService';
+import { handleError, handleSuccess } from '../../../utils/utils';
 
 
 function* loginSaga(action) {
@@ -15,22 +16,37 @@ function* loginSaga(action) {
             body: body,
             headers: { 'Content-Type': 'application/json' },
         });
-        const { success, token, name } = response.data;
-        
-        if (success) {
-            yield put(loginSuccess({ token, user: name }));
+        const { success, token, name, message } = response.data;
+        console.log(message)
+        console.log(success)
+        if (success===true) {
+            yield put(loginSuccess({ token, user: response.data }));
+            handleSuccess(message);
             localStorage.setItem('token', token);
             localStorage.setItem('loggedInUser', name);
-            console.log(localStorage.getItem('loggedInUser'));
-             navigate('/dashboard');
+            setTimeout(() => {
+                navigate('/dashboard');
+            }, 1000)
         } else {
-            throw new Error(response.data.message);
+            const error = message
+            yield put(loginFailure({error,stateOnly:false}));
         }
-    } catch (error) {
-        yield put(loginFailure(error.message || 'Login failed'));
-    }
+    } catch (error) { 
+        yield put(loginFailure({error,stateOnly:false}));   //-> when we need to dispatch in worker saga we use "put" keyword
+    }                                                               //-> instead of "dispatch" keyword
+
 }
 
+function *loginFailureSaga(action){
+    const {stateOnly}=action.payload;
+    if(!stateOnly){
+        return handleError(action.payload.error);
+    };
+}
+  
+export function* watchLoginFailureSaga(){
+   yield takeLatest(loginFailure.type,loginFailureSaga)
+}
 export function* watchLoginSaga() {
     yield takeLatest(loginRequest.type, loginSaga);
 }
