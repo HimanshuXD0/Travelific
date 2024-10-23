@@ -1,25 +1,23 @@
 // signUpSlice.js
 import { createSlice } from '@reduxjs/toolkit';
-import { Navigate } from 'react-router-dom';
 
 const initialState = {
     isLoading: false,
     isAuthenticated: false,
     error: null,
     success: false,
-    navigate:null
+    userinfo:null
 };
 
 const signUpSlice = createSlice({
-    name: 'auth',
+    name: 'signup',
     initialState,
     reducers: {
         signupRequest: (state,action) => {
             state.isLoading = true;
             state.error = null;
             state.success = action.payload.success;
-            state.navigate = action.payload.navigate
-
+            state.userinfo = action.payload.userinfo;
         },
         signupSuccess: (state, action) => {
             state.isLoading = false;

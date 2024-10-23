@@ -19,8 +19,7 @@ function Signup() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { isLoading, error, successMessage } = useSelector((state) => state.auth); // Select loading and error state
-
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
         setSignupInfo((prev) => ({ ...prev, [name]: value }));
@@ -33,21 +32,8 @@ function Signup() {
         if (!name || !email || !password || !city || !state || !mobile) {
             return handleError('All fields are required');
         }
-
-        dispatch(signupRequest(signupInfo)); // Dispatch the signup request
+        dispatch(signupRequest({...signupInfo,navigate})); // Dispatch the signup request
     };
-
-    // Handle success and error messages
-    if (successMessage) {
-        handleSuccess(successMessage);
-        setTimeout(() => {
-            navigate('/login');
-        }, 1000);
-    }
-
-    if (error) {
-        handleError(error);
-    }
 
     return (
         <div className={styles.container}>
@@ -130,8 +116,8 @@ function Signup() {
                         value={signupInfo.mobile}
                     />
                 </div>
-                <button type='submit' className={styles.authButton} disabled={isLoading}>
-                    {isLoading ? 'Signing up...' : 'Signup'}
+                <button type='submit' className={styles.authButton}>
+                    {'Signup'}
                 </button>
                 <span className={styles.authLink}>
                     Already have an account? <Link to="/login">Login</Link>

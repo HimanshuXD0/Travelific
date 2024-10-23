@@ -4,10 +4,11 @@ import { signupRequest, signupSuccess, signupFailure } from './signUpSlice';
 import networkService from '../../../services/networkService';
 import { handleSuccess } from '../../../utils/utils';
 
+
 function* signupSaga(action) {;
     try {
-        const { name, email, password, state, city, mobile} = action.payload;
-        const navigate = action.payload.navigate;
+        const { name, email, password, state, city, mobile, navigate} = action.payload;
+        //const {navigate} = action.payload.navigate;
         const url = `https://travelific-api.onrender.com/api/auth/signup`;
         const body = JSON.stringify({ name, email, password, state, city, mobile });
         
@@ -18,13 +19,18 @@ function* signupSaga(action) {;
         });
 
         const { success, message, error } = response.data;
-       // console.log(success)
+        console.log(success)
         if (success) {
-            yield put(signupSuccess({ success:success }));
+            yield put(signupSuccess({success:success}));
+            // const t = useSelector((state) => state.signup.success);
+            // const h = action.payload.success;
+            // console.log(h);
+            
+
             handleSuccess(success);
-            // setTimeout(() => {
-            //     navigate('/login');
-            // }, 1000);
+            setTimeout(() => {
+                navigate('/login');
+            }, 1000);
             // Optionally navigate or trigger any side effects
         } else {
             yield put(signupFailure(error));
