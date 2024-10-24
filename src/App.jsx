@@ -9,19 +9,18 @@ import Dashboard from './modules/Dashboard/Dashboard';
 import MyProfile from './modules/MyProfile/Myprofile';
 import store from './store';
 function App() {
-  // Get isAuthenticated state from the Redux store
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
 
   // Private Route wrapper component
   const PrivateRoute = ({ element }) => {
-    return isAuthenticated ? element : <Navigate to="/login" />;
+    return 1 ? element : <Navigate to="/login" />;
   };
 
   return (
     <Provider store={store}>
     <div className="App">
       {/* Refresh token handler, for example, to keep the session alive */}
-      {/* <RefrshHandler /> */}
+      <RefrshHandler />
       
       <Routes>
         <Route path='/' element={<Navigate to="/login" />} />

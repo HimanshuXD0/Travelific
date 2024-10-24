@@ -27,10 +27,10 @@ function* signupSaga(action) {;
             // console.log(h);
             
 
-            handleSuccess(success);
+            handleSuccess("Account Created");
             setTimeout(() => {
                 navigate('/login');
-            }, 1000);
+            }, 3000);
             // Optionally navigate or trigger any side effects
         } else {
             yield put(signupFailure(error));

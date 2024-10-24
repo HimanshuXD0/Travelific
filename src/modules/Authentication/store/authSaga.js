@@ -20,7 +20,7 @@ function* loginSaga(action) {
         console.log(message)
         console.log(success)
         if (success===true) {
-            yield put(loginSuccess({ token, user: response.data }));
+            yield put(loginSuccess({ token, user: response.data, isAuthenticated:true}));
             handleSuccess(message);
             localStorage.setItem('token', token);
             localStorage.setItem('loggedInUser', name);
