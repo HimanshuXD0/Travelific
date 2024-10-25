@@ -9,7 +9,7 @@ import Dashboard from './modules/Dashboard/Dashboard';
 import MyBookings from './modules/MyBookings/MyBookings';
 import AddProduct from './modules/AddProduct/AddProduct';
 import MyProfile from './modules/MyProfile/Myprofile';
-// import RefreshHandler from './utils/RefrshHandler'
+
 const PrivateRoute = ({ element }) => {
   return localStorage.getItem('token') ? element : <Navigate to="/login" />;
 };
@@ -22,11 +22,9 @@ function App() {
     const handlePopState = () => {
       navigate("/");
     };
-
     // Set up event listener for popstate
     window.addEventListener("popstate", handlePopState);
-
-    // Cleanup event listener on component unmount
+  // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("popstate", handlePopState);
     };
