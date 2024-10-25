@@ -2,9 +2,10 @@ import React from 'react';
 import "./Dashboard.css"
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/women.png'; // with import
-
 function Dashboard() {
     const navigate = useNavigate();
+   const name = localStorage.getItem('loggedInUser')
+
     const handleAddProd = (e) => {
         setTimeout(() => {
             navigate('/addproduct');
@@ -12,7 +13,7 @@ function Dashboard() {
     }
     const handleOnHome = (e) => {
         setTimeout(() => {
-            navigate('/home');
+            navigate('/mybookings');
         }, 1000)
     }
     const handleMyProfile = (e) => {
@@ -24,11 +25,11 @@ function Dashboard() {
         <div lang="en">
             <nav>
                 <ul className="nav__links">
-                    <li className="link"><a href="#" onClick={handleAddProd}>HOME</a></li>
-                    <li className="link"><a href="#"onClick={handleOnHome}>ABOUT US</a></li>
-                    <li className="link"><a href="#">BOOKING</a></li>
+                    <li className="link"><a href="#" onClick={handleAddProd}>BOOKING</a></li>
+                    <li className="link"><a href="#"onClick={handleOnHome}>MY BOOKINGS</a></li>
                     <li className="link"><a href="#">JOURNEY</a></li>
-                    <li className="link"><a href="#"onClick={handleMyProfile}>MY PROFILE</a></li>
+                    <li className="link"><a href="#">DEVELOPER ZONE</a></li>
+                    <li className="link"><a href="#"onClick={handleMyProfile}>{name?.toUpperCase()||"MY PROFILE"}</a></li>
                 </ul>
             </nav>
 

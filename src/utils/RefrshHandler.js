@@ -11,9 +11,12 @@ function RefrshHandler() {
                 location.pathname === '/login' ||
                 location.pathname === '/signup'
             ) {
-                navigate('/home', { replace: false });
+                navigate('/dashboard', { replace: false });
             }
         }
+        // else{
+        //     navigate('/dashboard', { replace: false });
+        // }
     }, [location, navigate])
 
     return (

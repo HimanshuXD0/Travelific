@@ -24,6 +24,7 @@ function* loginSaga(action) {
             handleSuccess(message);
             localStorage.setItem('token', token);
             localStorage.setItem('loggedInUser', name);
+            localStorage.setItem('userEmail',email);
             setTimeout(() => {
                 navigate('/dashboard');
             }, 1000)

@@ -4,10 +4,12 @@ import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects'; 
 import authReducer from './modules/Authentication/store/authSlice';
 import signupReducer from './modules/Authentication/store/signUpSlice';
+import myBookingsReducer from './modules/MyBookings/store/myBookingsSlice'
 import { watchLoginSaga, watchLoginFailureSaga } from './modules/Authentication/store/authSaga';
 import  {watchSignupSaga}  from './modules/Authentication/store/signUpSaga'; // Import the signup saga
 import addProductReducer from './modules/AddProduct/store/addproduct.slice';
 import { watchaddProductSaga } from './modules/AddProduct/store/addproduct.saga';
+import { watchmyBookingsSaga } from './modules/MyBookings/store/myBookingsSaga';
 const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
@@ -15,6 +17,7 @@ const store = configureStore({
         auth: authReducer,
         signup:signupReducer,
         addproduct:addProductReducer,
+        mybookings:myBookingsReducer,
     },
     middleware: (getDefaultMiddleware) => 
         getDefaultMiddleware({ serializableCheck: false }).concat(sagaMiddleware),
@@ -26,7 +29,8 @@ function* rootSaga() {
         watchLoginSaga(),
         watchLoginFailureSaga(),
         watchSignupSaga(),
-        watchaddProductSaga(), // Add the signup saga here
+        watchaddProductSaga(),
+        watchmyBookingsSaga(),
     ]);
 }
 

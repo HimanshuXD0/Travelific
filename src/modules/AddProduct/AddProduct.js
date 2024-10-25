@@ -17,6 +17,7 @@ function AddProduct() {
     })
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
         console.log(name, value);
@@ -31,40 +32,11 @@ function AddProduct() {
         if (!name || !price) {
             return handleError('name,and price are required')
         }
-        // try {
-        //     const url = `https://travelific-api.onrender.com/api/items`;
-        //     const body = JSON.stringify(prodInfo)
-        //     const token=localStorage.getItem('token')
-        //     const response = await networkService.post({url:url,body:body,headers:{
-        //         'Content-Type': "application/json",
-        //         'Authorization': `Bearer ${token}`
-        //     }})
-        //     const result = response.data;
-        //     const { success, message, error } = result;
-        //     console.log(success);
-        //     if (success) {
-        //         handleSuccess(`${message}`);
-        //         setTimeout(() => {
-        //             navigate('/dashboard')
-        //         },5000)
-        //     } else if (error) {
-        //         const details = error?.details[0].message;
-        //         handleError(details);
-        //     } else if (!success) {
-        //         handleError(`${message}`);
-        //     }
-        //     //console.log(result);
-        // } catch (err) {
-        //     handleError(err);
-        // }
-        // console.log(name)
-        // console.log(price)
-
         dispatch(addProductRequest({name,price,navigate}))
     }
     return (
         <div className={styles.container}>
-        <h1>Add Product</h1>
+        <h1>Book Your Trip</h1>
         <form onSubmit={handleAddProd}>
             <div className={styles.inputGroup}>
                 <label htmlFor='name'>Name</label>

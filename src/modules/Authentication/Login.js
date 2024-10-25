@@ -25,7 +25,7 @@ function Login(){
         if (!email || !password) {
             return handleError('Email and password are required');
         }
-        dispatch(loginRequest({ email, password, navigate }));
+         dispatch(loginRequest({ email, password, navigate }));
     };
 
     return (
