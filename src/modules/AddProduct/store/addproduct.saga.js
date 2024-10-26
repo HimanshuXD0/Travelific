@@ -6,12 +6,11 @@ import { handleError, handleSuccess } from '../../../utils/utils';
 function *addProductSaga(action){
     try {
         const email = localStorage.getItem('userEmail')
-        const {name,price,navigate}=action.payload;
-        console.log(name)
-        console.log(price)
+        const {firstname,lastname,useremail,contactNumber,budget,startingPoint,destination,vehicle,whatsAppNumber,navigate}=action.payload;
+        //console.log(price)
         const response= yield call(networkService.post, {             // way of calling method in call is differnet see here
             url: 'https://travelific-api.onrender.com/api/items',
-            body: JSON.stringify({name,price,email}),
+            body: JSON.stringify({firstname,lastname,useremail,contactNumber,budget,startingPoint,destination,vehicle,whatsAppNumber,email}),
             headers: { 'Content-Type': 'application/json' },
           });
           

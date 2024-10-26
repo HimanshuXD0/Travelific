@@ -16,7 +16,7 @@ function MyBookings() {
     }, [])
 
     const products = useSelector((state) => state.mybookings.bookingsInfo);
-
+    console.log(products)
     const handlePrev = () => {}
     const handleNext = () => {}
     return (
@@ -28,14 +28,24 @@ function MyBookings() {
                 <ul className={styles.productList}>
                     {products && products.map((item, index) => (
                         <li key={index} className={styles.productListItem}>
-                            <span>{item.name} : {item.price}</span>
+                            <span> firstname : {item.firstname}</span> 
+                            <span>lastname: {item.lastname}</span>
+                            <span>vehicle: {item.vehicle}</span>
+                            <span>destination: {item.destination}</span>
+                            <span> startingPoint: {item.startingPoint}</span>
+                            <span>email: {item.useremail}</span>
+                            <span> budget: {item.budget}</span>
+                            <br/>
+                            <br/>
                         </li>
+                        
                     ))}
                 </ul>
-                <div>
+                 
+                {/* <div>
                     <button className={styles.navButton} onClick={handlePrev}>Prev</button>
                     <button className={styles.navButton} onClick={handleNext}>Next</button>
-                </div>
+                </div> */}
             </div>
             <ToastContainer />
         </div>

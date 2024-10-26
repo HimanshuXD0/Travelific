@@ -62,3 +62,8 @@
 .navButton:hover {
     background-color: #fb8c00; /* Darker orange on hover */
 }
+
+.productListItem span {
+    display: block; /* Each property on a new line */
+    margin-bottom: 5px; /* Space between spans */
+}
