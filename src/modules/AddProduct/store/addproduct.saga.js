@@ -1,7 +1,8 @@
 import { call, put, takeLatest,all } from 'redux-saga/effects';
 import { addProductRequest,addProductError,addProductSuccess } from './addproduct.slice';
 import networkService from '../../../services/networkService';
-import { handleError, handleSuccess } from '../../../utils/utils';
+import { Bookingcnfrm, handleError, handleSuccess } from '../../../utils/utils';
+
 
 function *addProductSaga(action){
     try {
@@ -17,7 +18,7 @@ function *addProductSaga(action){
         const {success,message}=response.data;
         if(success===true) {
             yield put(addProductSuccess({success:success}));
-            handleSuccess(message);
+            Bookingcnfrm("BOOKING CONFIRMED",navigate)
             setTimeout(() => {
                 navigate('/dashboard')
             }, 1000);

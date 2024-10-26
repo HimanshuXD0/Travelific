@@ -21,7 +21,7 @@ function MyBookings() {
     const handleNext = () => {}
     return (
         <div className={styles.welcomeContainer}>
-            <h1 className={styles.welcomeTitle}>Welcome</h1>
+            <h1 className={styles.welcomeTitle}>YOUR BOOKINGS </h1>
             <div className={styles.buttonContainer}>
             </div>
             <div>
