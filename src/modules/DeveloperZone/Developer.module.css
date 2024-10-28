@@ -1,0 +1,247 @@
+/* General Styles */
+.Developer {
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    background: #000000;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+  
+  /* Navbar */
+  .navbar {
+     
+
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    /* background: rgba(0, 0, 0, 0.9); */
+    box-shadow: 0 4px 20px rgb(56, 248, 232);
+    z-index: 1000;
+  }
+  
+  .logo {
+    
+    font-size: 1.8rem;
+  
+    color: #00f9ff;
+  }
+  
+  .navLinks {
+    list-style-type: none; /* Removes bullet points */
+    display: flex;
+    gap: 25px;
+  }
+  
+  .navLinks a {
+    color: #00f9ff;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+  
+  .navLinks a:hover {
+    color: #f9ff00;
+  }
+  
+  /* Hero Section */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(180deg, #000000, #000000);
+    text-align: center;
+  }
+
+  .title {
+    font-size: 4rem;
+    font-weight: 200;
+    color: #00f9ff;
+    text-shadow: 2px 2px 6px rgb(116, 196, 206);
+  }
+  
+  .title span {
+   
+    color: #ffffff;
+  }
+  
+  .subtitle {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    color: #e0e0e0;
+  }
+  
+  .ctaButton {
+    margin-top: 30px;
+    padding: 15px 30px;
+    background: #00f9ff;
+    color: #1a1a2e;
+    font-size: 1.2rem;
+    font-weight: 200;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(0, 249, 255, 0.4);
+    transition: background 0.3s;
+  }
+  
+  .ctaButton:hover {
+    background: #f9ff00;
+    color: #1a1a2e;
+  }
+  
+  /* About Section */
+  .about {
+    letter-spacing: 0.1rem; 
+    padding: 80px 10%;
+    text-align: center;
+    background: #202051;
+    color: #f0f0f0;
+  }
+  
+
+  .about h2 {
+    font-size: 2.5rem;
+    color: #00f9ff;
+  }
+  
+  .about p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 20px auto;
+  }
+  
+  /* Experience Section */
+  .experience {
+    padding: 80px 10%;
+    background: #1a1a2e;
+    color: #f0f0f0;
+    text-align: center;
+  }
+  
+  .experience h2 {
+    font-size: 2.5rem;
+    color: #f9ff00;
+  }
+  
+  /* Projects Section */
+  .projects {
+    padding: 80px 10%;
+    background: #202051;
+    color: #f0f0f0;
+  }
+  
+  .projects h2 {
+    font-size: 2.5rem;
+    color: #00f9ff;
+  }
+  
+  .projectList {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .projectCard {
+    padding: 20px;
+    background: #1a1a2e;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    width: 300px;
+    color: #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .projectCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 249, 255, 0.3);
+  }
+  
+  /* Contact Section */
+  .contact {
+    padding: 80px 10%;
+    text-align: center;
+    background: #1a1a2e;
+    color: #f0f0f0;
+  }
+  
+  .contact h2 {
+    font-size: 2.5rem;
+    color: #f9ff00;
+  }
+  
+  .contactButton {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #00f9ff;
+    color: #1a1a2e;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(0, 249, 255, 0.4);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  
+  .contactButton:hover {
+
+    background: #f9ff00;
+    box-shadow: 0 0 20px rgba(249, 255, 0, 0.5);
+  }
+  
+  /* Responsive */
+  @media screen and (max-width: 830px) {
+    .title {
+      font-size: 2.5rem;
+    }
+  
+    .subtitle, .about p, .experience p {
+      font-size: 1rem;
+    }
+    .hero h1 span{
+        font-size: 2.6rem;
+      }
+    .projectList {
+      flex-direction: column;
+    }
+
+    @media screen and (max-width: 600px) {
+        .title {
+            font-size: 2.5rem;
+        }
+    
+        .subtitle {
+            font-size: 1rem;
+        }
+    
+        .ctaButton {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+    
+        .about, .experience, .projects, .contact {
+            padding: 30px 3%;
+        }
+    
+        .logo{
+             font-size: 0;
+        }
+        .about h2, .projects h2, .experience h2, .contact h2 {
+            font-size: 1.5rem;
+        }
+    
+        .projectList {
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero h1 span{
+            font-size: 2.6rem;
+          }
+        .navLinks {
+            gap: 12px;
+        }
+    }
+  }

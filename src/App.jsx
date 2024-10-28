@@ -9,6 +9,7 @@ import Dashboard from './modules/Dashboard/Dashboard';
 import MyBookings from './modules/MyBookings/MyBookings';
 import AddProduct from './modules/AddProduct/AddProduct';
 import MyProfile from './modules/MyProfile/Myprofile';
+import Developer from './modules/DeveloperZone/Developer';
 
 
 const PrivateRoute = ({ element }) => {
@@ -45,6 +46,7 @@ function App() {
           <Route path='/mybookings' element={<PrivateRoute element={<MyBookings />} />} />
           <Route path='/addproduct' element={<PrivateRoute element={<AddProduct />} />} />
           <Route path='/myprofile' element={<PrivateRoute element={<MyProfile />} />} />
+          <Route path='/developer' element={<Developer/>} />
          
         </Routes>
       </div>

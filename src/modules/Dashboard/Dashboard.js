@@ -21,6 +21,11 @@ function Dashboard() {
             navigate('/myprofile');
         }, 1000)
     }
+    const handledev = (e) => {
+        setTimeout(() => {
+            navigate('/developer');
+        }, 1000)
+    }
     return (
         <div lang="en">
             <nav>
@@ -28,7 +33,7 @@ function Dashboard() {
                     <li className="link"><a href="#" onClick={handleAddProd}>BOOKING</a></li>
                     <li className="link"><a href="#"onClick={handleOnHome}>MY BOOKINGS</a></li>
                     <li className="link"><a href="#">JOURNEY</a></li>
-                    <li className="link"><a href="#">DEVELOPER ZONE</a></li>
+                    <li className="link"><a href="#"onClick={handledev}>DEVELOPER ZONE</a></li>
                     <li className="link"><a href="#"onClick={handleMyProfile}>{name?.toUpperCase()||"MY PROFILE"}</a></li>
                 </ul>
             </nav>
