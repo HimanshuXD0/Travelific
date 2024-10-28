@@ -9,8 +9,8 @@ function Developer() {
         <div className={styles.logo}>My Portfolio</div>
         <ul className={styles.navLinks}>
           <li>
-            <a href="/Himanshu-Sharmacv.pdf" download>
-              Download CV
+            <a href="https://drive.google.com/file/d/14YFH3_HDBzxUN4gjUmu-JGEQAYviK74m/view?usp=sharing">
+                Resume
             </a>
           </li>
           <li><a href="#experience">Experience</a></li>
