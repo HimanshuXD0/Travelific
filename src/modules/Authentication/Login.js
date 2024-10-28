@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginRequest } from '../Authentication/store/authSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './AuthForm.module.css';
 import { ToastContainer } from 'react-toastify';
 import { handleError } from '../../utils/utils';
@@ -29,6 +29,7 @@ function Login(){
     };
 
     return (
+        <div className={styles.wrapper}>
         <div className={styles.container}>
             <h1>Login</h1>
             <form onSubmit={handleLogin}>
@@ -53,9 +54,12 @@ function Login(){
                     />
                 </div>
                 <button type='submit' className={styles.loginButton}>Login</button>
-                <button onClick={handleSignup} className={styles.loginButton}>Signup</button>
+                <span className={styles.authLink}>
+                    Don't have an account? <Link to="/signup">Signup</Link>
+                </span>
             </form>
             <ToastContainer />
+        </div>
         </div>
     );
 }

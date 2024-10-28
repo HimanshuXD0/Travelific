@@ -1,69 +1,161 @@
-/* Container for the welcome message and product list */
+/* MyBookings.module.css */
+
 .welcomeContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    background-color: #f1f8e9; /* Light green background */
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align:justify
 }
 
-/* Title styling */
 .welcomeTitle {
-    font-size: 2rem;
-    color: #4caf50; /* Green color for the welcome title */
-    margin-bottom: 1rem;
+    font-size: 28px;
+    color: #08dccb;
+    font-weight: bold;
+    margin-bottom: 20px;
+    letter-spacing: 1.2px;
 }
 
-/* Button container */
-.buttonContainer {
-    margin-bottom: 1rem;
-}
-
-/* Individual button styling */
-.actionButton {
-    margin: 0 10px; /* Spacing between buttons */
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    color: white;
-    background-color: #1976d2; /* Blue background for buttons */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.actionButton:hover {
-    background-color: #1565c0; /* Darker blue on hover */
-}
-
-/* Product list styling */
-.productList {
-    list-style-type: none; /* Remove bullet points from list */
-    padding: 0; /* Remove default padding */
+.ticket-card {
+    list-style-type: none;
+    padding: 0;
 }
 
 .productListItem {
-    font-size: 1.1rem; /* Slightly larger text for product items */
-    margin: 0.5rem 0; /* Spacing between product items */
+    background: linear-gradient(135deg, #167061e3, #010b0b);
+    border-radius: 12px;
+    color: white;
+    margin: 20px 0;
+    padding: 20px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Navigation button styling */
+.direction-row::before {
+    content: "";
+    position: absolute;
+    left: 0; /* Start from the left */
+    right: 0; /* End at the right */
+    top: 50%; /* Center it vertically */
+    height: 2px; /* Thickness of the arrow line */
+    background: #fff; /* Color of the arrow line */
+    z-index: 0; /* Place behind the text */
+}
+.productListItem::before,
+.productListItem::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: #dfe6e9;
+    border-radius: 50%;
+}
+
+.productListItem::before {
+    left: -10px;
+    height: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid #dfe6e9;
+}
+
+.productListItem::after {
+    right: -10px;
+    height: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid #dfe6e9;
+}
+
+.ticket-card h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    color: #dfe6e9;
+}
+
+.direction-row {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
+    justify-content: space-between; /* Places items at the start and end */
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    position: relative; /* Allows absolute positioning for the arrow */
+}
+
+.direction-row span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #dfe6e9;
+    position: relative; /* Allows absolute positioning of the arrow */
+    z-index: 1; /* Ensures text is above the arrow */
+}
+
+.direction-arrow {
+    font-size: 24px;
+    color: #d31313;
+    font-weight: bold;
+    position: absolute; /* Allows positioning relative to the parent */
+    left: 50%; /* Position the arrow at the center */
+    transform: translateX(-50%); /* Center the arrow */
+    z-index: 0; /* Places the arrow behind the text */
+}
+
+.ticket-details {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ticket-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px; /* Adds space within each item */
+    font-size: 16px;
+    width: 50%; /* Each ticket item takes up half the width of the container */
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    gap: 10px; /* Adds space between label and span */
+    margin-bottom: 10px; /* Adds space between ticket */
+
+}
+
+.ticket-item label {
+    font-weight: bold;
+    color: #dfe6e9;
+    flex: 1; /* Allows the label to take up equal space */
+    padding-right: 10px; /* Adds padding to the right of the label */
+}
+
+.ticket-item span {
+    flex: 1; /* Allows the span to take up equal space */
+    text-align: right; /* Aligns span content to the right */
+    padding-left: 10px; /* Adds padding to the left of the span */
+}
+
+.ticket-item:nth-child(2n) {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .navButton {
-    margin: 0 10px; /* Spacing between navigation buttons */
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    background-color: #ff9800; /* Orange background for navigation buttons */
-    color: white;
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0984e3;
     border: none;
-    border-radius: 4px;
+    border-radius: 25px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .navButton:hover {
-    background-color: #fb8c00; /* Darker orange on hover */
-}
-
-.productListItem span {
-    display: block; /* Each property on a new line */
-    margin-bottom: 5px; /* Space between spans */
+    background-color: #74b9ff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }

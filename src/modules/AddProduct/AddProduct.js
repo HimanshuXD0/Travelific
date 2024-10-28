@@ -133,7 +133,7 @@ function AddProduct() {
                     <label htmlFor='contactNumber'>Contact Number</label>
                     <input
                         onChange={handleChange}
-                        type='text'
+                        type='number'
                         name='contactNumber'
                         placeholder='Enter contact number...'
                         value={prodInfo.contactNumber}
@@ -144,7 +144,7 @@ function AddProduct() {
                     <label htmlFor='whatsAppNumber'>WhatsApp Number</label>
                     <input
                         onChange={handleChange}
-                        type='text'
+                        type='number'
                         name='whatsAppNumber'
                         placeholder='Enter WhatsApp number...'
                         value={prodInfo.whatsAppNumber}

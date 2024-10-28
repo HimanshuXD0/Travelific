@@ -37,8 +37,9 @@ function Signup() {
     };
 
     return (
+        
         <div className={styles.container}>
-            <h1>Signup</h1>
+            <h1>Create Your Account </h1>
             <form onSubmit={handleSignup}>
                 <div className={styles.inputGroup}>
                     <label htmlFor='name'>Name</label>
@@ -117,7 +118,7 @@ function Signup() {
                         value={signupInfo.mobile}
                     />
                 </div>
-                <button type='submit' className={styles.authButton}>
+                <button type='submit' className={styles.loginButton}>
                     {'Signup'}
                 </button>
                 <span className={styles.authLink}>

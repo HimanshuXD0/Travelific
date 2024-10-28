@@ -16,7 +16,7 @@ export const handleError = (msg) => {
 export const Bookingcnfrm = (msg,navigate) => {
     Swal.fire({
         title: msg,
-        text: 'Want to see all your bookings',
+        text: 'Our team will contact you soon !! \n Want to see all your bookings',
         icon: 'success',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

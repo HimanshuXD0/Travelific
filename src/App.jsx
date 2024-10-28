@@ -9,7 +9,7 @@ import Dashboard from './modules/Dashboard/Dashboard';
 import MyBookings from './modules/MyBookings/MyBookings';
 import AddProduct from './modules/AddProduct/AddProduct';
 import MyProfile from './modules/MyProfile/Myprofile';
-import BookingConfirmation from './utils/BookingConfirmation';
+
 
 const PrivateRoute = ({ element }) => {
   return localStorage.getItem('token') ? element : <Navigate to="/login" />;
@@ -45,7 +45,7 @@ function App() {
           <Route path='/mybookings' element={<PrivateRoute element={<MyBookings />} />} />
           <Route path='/addproduct' element={<PrivateRoute element={<AddProduct />} />} />
           <Route path='/myprofile' element={<PrivateRoute element={<MyProfile />} />} />
-          <Route path='/bookingcnfrm' element={<PrivateRoute element={<BookingConfirmation />} />} />
+         
         </Routes>
       </div>
     </Provider>

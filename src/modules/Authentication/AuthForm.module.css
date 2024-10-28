@@ -1,92 +1,119 @@
-/* Container for the entire form */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f4f4f4;
-}
 
-/* Form input group styling */
-.inputGroup {
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 300px;
-}
-
-.inputGroup label {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-.inputGroup input {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* Button styling */
-.authButton {
+.loginButton {
     margin-top: 1rem;
     padding: 0.75rem;
     width: 100%;
     max-width: 300px;
-    font-size: 1rem;
-    background-color: #4caf50;
+    font-size: 1.2rem;
+    background-color: #045e57;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.authButton:hover {
-    background-color: #45a049;
+.container {
+    margin-top: 200px;
+    max-width: 700px; /* Maximum width for larger screens */
+    width: 95vw;       /* Full width with slight side margins */
+    padding: 40px;
+    margin: 20px auto; /* Center the container */
+    background-color: rgba(255, 255, 255, 0.169); /* Slightly transparent white */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    border: 1px solid rgba(200, 200, 200, 0.79); /* Light border */
+    backdrop-filter: blur(2px); /* Slight blur effect */
+    box-sizing: border-box;
 }
 
-/* Link styling */
+
+.heading {
+    font-size: 2.5rem;
+    color: #111111;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.inputGroup {
+    align-self: stretch;
+    margin-bottom: 15px;
+    flex: 1;
+
+}
+
+label {
+    font-size: 1.2rem;
+    color: #000000;
+}
+input::placeholder {
+    color: #0c0c0c; /* Change to your preferred color */
+    opacity: 0.8; /* Adjust opacity if needed */
+}
+
+input, select {
+    background-color: rgba(219, 214, 214, 0.861);  
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 1rem;
+    border: 1px solid #cccccc00;
+    border-radius: 4px;
+}
+
+.authButton {
+    max-width: 700px; /* Maximum width for larger screens */
+    width: 95vw;       /* Full width with slight side margins */
+    padding: 40px;
+    margin: 0;        /* Remove margin, it is now centered with flexbox */
+    background-color: rgba(255, 255, 255, 0.169); /* Slightly transparent white */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    border: 1px solid rgba(200, 200, 200, 0.79); /* Light border */
+    backdrop-filter: blur(2px); /* Slight blur effect */
+    box-sizing: border-box;
+}
+
+.authButton:hover {
+    background-color: #0056b3;
+}
+
 .authLink {
-    margin-top: 1rem;
-    font-size: 0.9rem;
+    display: block;
+    margin-top: 15px;
+    text-align: center;
 }
 
 .authLink a {
-    color: #007bff;
+    color: #f7f7f7;
     text-decoration: none;
 }
 
 .authLink a:hover {
     text-decoration: underline;
 }
-.loginButton {
-    margin-top: 1rem;
-    padding: 0.75rem;
-    width: 100%;
-    max-width: 300px;
-    font-size: 1rem;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+
+
+body, html {
+    height: 100%; /* Make sure the body and html take full height */
+    margin: 0;    /* Remove default margin */
 }
-.dropdown {
-    margin-bottom: 1rem;
+
+.wrapper { /* New wrapper class */
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 300px;
-}
-
-.dropdown label {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-.dropdown  select{
-    padding: 0.75rem;
-   
-
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 100vh;          /* Full height of the viewport */
 }
