@@ -9,7 +9,7 @@ function Developer() {
         <div className={styles.logo}>My Portfolio</div>
         <ul className={styles.navLinks}>
           <li>
-            <a href="/Himanshu_Sharma_CV.pdf" download>
+            <a href="/Himanshu-Sharmacv.pdf" download>
               Download CV
             </a>
           </li>
