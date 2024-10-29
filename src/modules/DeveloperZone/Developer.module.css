@@ -12,12 +12,12 @@
      
 
     position: fixed;
-    top: 0px;
+    top: 0;
     width: 100%;
     padding: 20px 5%;
     display: flex;
-    justify-content: space-between;
-    /* background: rgba(0, 0, 0, 0.9); */
+    justify-content:space-between;
+    background: rgb(0, 0, 0);
     box-shadow: 0 4px 20px rgb(56, 248, 232);
     z-index: 1000;
   }
