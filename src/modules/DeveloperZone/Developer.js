@@ -13,9 +13,9 @@ function Developer() {
               Resume
             </a>
           </li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="">Experience</a></li>
+          <li><a href="">Projects</a></li>
+          <li><a href="">Contact</a></li>
         </ul>
         <ul> </ul>
       </nav>
@@ -24,7 +24,7 @@ function Developer() {
       <section id="hero" className={styles.hero}>
         <h1 className={styles.title}>Hi, I'm <span>Himanshu Sharma</span></h1>
         <p className={styles.subtitle}>Full Stack Developer Crafting Modern Web and Mobile Applications Experiences</p>
-        <a href="#projects" className={styles.ctaButton}>See My Work</a>
+        <a href="" className={styles.ctaButton}>See My Work</a>
       </section>
 
       {/* About Section */}
@@ -74,7 +74,7 @@ function Developer() {
             <h1> Skills Developed: Flutter, Dart, Firebase</h1>
             <a href='https://play.google.com/store/apps/details?id=com.tanxe.android.ekalakaar_app'>Visit App </a>
             &nbsp;&nbsp;&nbsp;
-            <a href=''>Source Code</a>
+            <a href='https://github.com/eKalakaar20/eKalakaar'>Source Code</a>
 
           </div>
           <div className={styles.projectCard}>
