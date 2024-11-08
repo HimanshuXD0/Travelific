@@ -33,7 +33,7 @@ function Dashboard() {
                     <li className="link"><a href="#" onClick={handleAddProd}>BOOKING</a></li>
                     <li className="link"><a href="#"onClick={handleOnHome}>MY BOOKINGS</a></li>
                     <li className="link"><a href="#">JOURNEY</a></li>
-                    <li className="link"><a href="#"onClick={handledev}>DEVELOPER ZONE</a></li>
+                    <li className="link"><a href="https://portfolio-25ao.onrender.com/">DEVELOPER ZONE</a></li>
                     <li className="link"><a href="#"onClick={handleMyProfile}>{name?.toUpperCase()||"MY PROFILE"}</a></li>
                 </ul>
             </nav>
